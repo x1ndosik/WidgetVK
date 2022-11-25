@@ -1,0 +1,1 @@
+bin/php7/bin/php src/ddosnik/utils/start.php

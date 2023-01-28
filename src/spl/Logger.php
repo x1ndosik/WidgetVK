@@ -1,15 +1,45 @@
 <?php
 
-declare(strict_types=1);
+/*
+ * PocketMine Standard PHP Library
+ * Copyright (C) 2014-2017 PocketMine Team <https://github.com/PocketMine/PocketMine-SPL>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+*/
 
 interface Logger{
-
 	/**
 	 * Critical conditions
 	 *
 	 * @param string $message
 	 */
-	public function critical(string $message) : void;
+	//public function critical(string $message) : void;
+
+	/**
+	 * Runtime errors that do not require immediate action but should typically
+	 * be logged and monitored.
+	 *
+	 * @param string $message
+	 */
+	//public function error(string $message) : void;
+
+	/**
+	 * Exceptional occurrences that are not errors.
+	 *
+	 * Example: Use of deprecated APIs, poor use of an API, undesirable things
+	 * that are not necessarily wrong.
+	 *
+	 * @param string $message
+	 */
+	//public function warning(string $message) : void;
 
 	/**
 	 * Normal but significant events.
@@ -26,12 +56,19 @@ interface Logger{
 	public function info(string $message) : void;
 
 	/**
+	 * Detailed debug information.
+	 *
+	 * @param string $message
+	 */
+	//public function debug(string $message) : void;
+
+	/**
 	 * Logs with an arbitrary level.
 	 *
 	 * @param mixed  $level
 	 * @param string $message
 	 */
-	public function log(mixed $level, string $message) : void;
+	//public function log(mixed $level, string $message) : void;
 
 	/**
 	 * Logs a Throwable object
@@ -39,5 +76,5 @@ interface Logger{
 	 * @param Throwable $e
 	 * @param $trace
 	 */
-	public function logException(\Throwable $e, $trace = null) : void;
+	//public function logException(\Throwable $e, $trace = null) : void;
 }

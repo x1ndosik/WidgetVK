@@ -18,24 +18,43 @@
 declare(strict_types=1);
 
 class SimpleLogger implements \Logger{
+	public function emergency($message){
+		$this->log(LogLevel::EMERGENCY, $message);
+	}
 
-	public function critical(string $message) : void{
+	public function alert($message){
+		$this->log(LogLevel::ALERT, $message);
+	}
+
+	public function critical($message){
 		$this->log(LogLevel::CRITICAL, $message);
 	}
 
-	public function notice(string $message) : void{
+	public function error($message){
+		$this->log(LogLevel::ERROR, $message);
+	}
+
+	public function warning($message){
+		$this->log(LogLevel::WARNING, $message);
+	}
+
+	public function notice($message){
 		$this->log(LogLevel::NOTICE, $message);
 	}
 
-	public function info(string $message) : void{
+	public function info($message){
 		$this->log(LogLevel::INFO, $message);
 	}
 
-	public function log(mixed $level, string $message) : void{
+	public function debug($message){
+		$this->log(LogLevel::DEBUG, $message);
+	}
+
+	public function log($level, $message){
 		echo "[" . strtoupper($level) . "] " . $message . PHP_EOL;
 	}
 
-	public function logException(\Throwable $e, $trace = null) : void{
+	public function logException(\Throwable $e, $trace = null){
 		$this->critical($e->getMessage());
 		echo $e->getTraceAsString();
 	}

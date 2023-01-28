@@ -21,6 +21,6 @@ interface LoggerAttachment{
 	 * @param mixed  $level
 	 * @param string $message
 	 */
-	public function log(mixed $level, string $message) : void;
+	public function log($level, $message);
 
 }

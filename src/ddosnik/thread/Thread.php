@@ -13,9 +13,9 @@ abstract class Thread extends \Thread {
 	public ?ClassLoader $classLoader = null;
 	public bool $isQuited = false;
 
-    public function getClassLoader() : ?ClassLoader{
-    	return $this->classLoader;
-    }
+  public function getClassLoader() : ?ClassLoader{
+    return $this->classLoader;
+  }
 
 	public function setClassLoader(\ClassLoader $loader = null) : void{
 		if ($loader === null) {
@@ -30,14 +30,15 @@ abstract class Thread extends \Thread {
 		}
 	}
 
-	public function start(?int $options = PTHREADS_INHERIT_ALL) {
-		if (!$this->isRunning() && !$this->isJoined() && !$this->isTerminated()) {
+	public function start(?int $options = PTHREADS_INHERIT_ALL) : bool{
+		if(!$this->isRunning() and !$this->isJoined() and !$this->isTerminated()){
+		//if (!$this->running && !$this->joined && !$this->terminated) {
 			if ($this->classLoader === NULL) {
 				$this->setClassLoader();
 			}
 			return parent::start($options);
 		}
-		return false;
+		return true;
 	}
 
 	public function quit() : void{

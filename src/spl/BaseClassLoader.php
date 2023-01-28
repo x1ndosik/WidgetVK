@@ -1,24 +1,37 @@
 <?php
 
-declare(strict_types=1);
+/*
+ * PocketMine Standard PHP Library
+ * Copyright (C) 2014-2017 PocketMine Team <https://github.com/PocketMine/PocketMine-SPL>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+*/
 
-class BaseClassLoader extends \Threaded implements ClassLoader{
+class BaseClassLoader extends \ThreadedBase implements ClassLoader{
 
 	/** @var \ClassLoader */
-	private $parent;
+	private ?ClassLoader $parent;
 	/** @var string[] */
-	private $lookup;
+	private \ThreadedArray $lookup;
 	/** @var string[] */
-	private $classes;
+	private \ThreadedArray $classes;
 
 
 	/**
 	 * @param ClassLoader $parent
 	 */
-	public function __construct(ClassLoader $parent = null){
+	public function __construct(?ClassLoader $parent = null){
 		$this->parent = $parent;
-		$this->lookup = new \Threaded;
-		$this->classes = new \Threaded;
+		$this->lookup = new \ThreadedArray;
+		$this->classes = new \ThreadedArray;
 	}
 
 	/**
@@ -47,7 +60,7 @@ class BaseClassLoader extends \Threaded implements ClassLoader{
 			$this->lookup[] = $path;
 		}
 	}
-	
+
 	protected function getAndRemoveLookupEntries(){
 		$entries = [];
 		while($this->count() > 0){
@@ -120,7 +133,7 @@ class BaseClassLoader extends \Threaded implements ClassLoader{
 			if(method_exists($name, "onClassLoaded") and (new ReflectionClass($name))->getMethod("onClassLoaded")->isStatic()){
 				$name::onClassLoaded();
 			}
-			
+
 			$this->classes[] = $name;
 
 			return true;

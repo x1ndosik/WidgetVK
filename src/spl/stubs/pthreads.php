@@ -1,5 +1,4 @@
 <?php
-
 /**
  * pthreads extension stub file for code completion purposes
  *
@@ -9,8 +8,6 @@
  * @version 3.0.0
  * @link    https://github.com/krakjoe/pthreads/blob/master/examples/stub.php
  */
-
-declare(strict_types=1);
 
 /**
  * The default inheritance mask used when starting Threads and Workers
@@ -385,7 +382,6 @@ class Worker extends Thread{
  * @link http://www.php.net/manual/en/class.pool.php
  */
 class Pool{
-
 	/**
 	 * The maximum number of Worker threads allowed in this Pool
 	 *

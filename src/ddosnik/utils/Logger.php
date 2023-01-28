@@ -15,8 +15,10 @@ class Logger extends \AttachableThreadedLogger implements \BufferedLogger{
 	private string $format = TerminalColors::AQUA . "[%s] " . TerminalColors::RESET . "%s[%s/%s]: %s" . TerminalColors::RESET;
 
 	public function __construct() {
-		parent::__construct();
+		//parent::__construct();
 	}
+
+	public function run() : void{}
 
 	public function critical(string $message) : void{
 		$this->sendLog($message, LogLevel::CRITICAL, 'CRITICAL', TerminalColors::RED);
@@ -34,7 +36,7 @@ class Logger extends \AttachableThreadedLogger implements \BufferedLogger{
 		$this->synchronized($c);
 	}
 
-    public function log(mixed $level, string $message) : void{
+  public function log(mixed $level, string $message) : void{
 		switch($level){
 			case LogLevel::CRITICAL:
 				$this->critical($message);

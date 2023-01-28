@@ -91,7 +91,7 @@ final class MinecraftQuery {
             return ['identifier' => $host.':'.$port, 'num' => 0, 'max' => 0, 'error' => 'server do not answer'];
         }
         if (substr($response, 0, 1) !== "\x1C") {
-            return ['host' => $host, 'error' => 'error'];
+            return ['host' => $host, 'num' => 0, 'max' => 0, 'error' => 'error'];
         }
 
         $serverInfo = substr($response, 35);

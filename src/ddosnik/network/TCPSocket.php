@@ -23,7 +23,7 @@ class TCPSocket extends Socket {
 		parent::__construct($logger, $address, $port, $packets, $time);
 	}
 
-	public function run() {
+	public function run() : void{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
 		$this->socket = $socket;

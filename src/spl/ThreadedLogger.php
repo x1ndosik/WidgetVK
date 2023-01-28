@@ -2,7 +2,7 @@
 
 /*
  * PocketMine Standard PHP Library
- * Copyright (C) 2014-2018 PocketMine Team <https://github.com/PocketMine/PocketMine-SPL>
+ * Copyright (C) 2014-2017 PocketMine Team <https://github.com/PocketMine/PocketMine-SPL>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,6 +15,6 @@
  * GNU General Public License for more details.
 */
 
-abstract class ThreadedLogger extends \Threaded implements Logger{
+abstract class ThreadedLogger extends \Thread implements Logger{
 
 }
